@@ -16,6 +16,7 @@ Prototype Refactor
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
 
+/*
 function GameObject(attrs) {
   this.createdAt = attrs.createdAt;
   this.name = attrs.name;
@@ -24,6 +25,21 @@ function GameObject(attrs) {
     return `${this.name} was removed from the game.`;
   }
 }
+*/
+
+// Convert to ES6 Below
+class GameObject {
+  constructor(attrs) {
+    this.createdAt = attrs.createdAt;
+    this.name = attrs.name;
+    this.dimensions = attrs.dimensions;
+  }
+
+  destroy() {
+    return `${this.name} was removed from the game.`;
+  }
+}
+
 
 /*
   === CharacterStats ===
@@ -32,11 +48,25 @@ function GameObject(attrs) {
   * should inherit destroy() from GameObject's prototype
 */
 
+/*
 function CharacterStats(csAttrs) {
   GameObject.call(this, csAttrs);
 
   this.healthPoints = csAttrs.healthPoints;
   this.takeDamage = function() {
+    return `${this.name} took damage.`;
+  }
+}
+*/
+
+// Convert to ES6
+class CharacterStats extends GameObject {
+  constructor(csAttrs) {
+    super(csAttrs);
+    this.healthPoints = csAttrs.healthPoints;
+  }
+
+  takeDamage() {
     return `${this.name} took damage.`;
   }
 }
@@ -52,6 +82,7 @@ function CharacterStats(csAttrs) {
   * should inherit takeDamage() from CharacterStats
 */
 
+/*
 function Humanoid(hAttrs) {
   CharacterStats.call(this, hAttrs);
 
@@ -59,6 +90,21 @@ function Humanoid(hAttrs) {
   this.weapons = hAttrs.weapons;
   this.language = hAttrs.language;
   this.greet = function() {
+    return `${this.name} offers a greeting in ${this.language}.`;
+  }
+}
+*/
+
+// Convert to ES6
+class Humanoid extends CharacterStats {
+  constructor(hAttrs) {
+    super(hAttrs);
+    this.team = hAttrs.team;
+    this.weapons = hAttrs.weapons;
+    this.language = hAttrs.language;
+  }
+
+  greet() {
     return `${this.name} offers a greeting in ${this.language}.`;
   }
 }
