@@ -34,13 +34,13 @@ class Student extends Person {
     super(sAttrs);
     this.previousBackground = sAttrs.previousBackground;
     this.className = sAttrs.className;
-    this.favSubject = sAttrs.favSubject;
+    this.favSubjects = sAttrs.favSubjects;
   }
 
   listsSubjects() {
-    this.favSubject.forEach(element => {
-      console.log(element);
-    });
+    for(let i = 0; i < this.favSubjects.length; i++) {
+      console.log(this.favSubjects[i]);
+    }
   }
 
   PRAssignment(subject) {
@@ -48,7 +48,7 @@ class Student extends Person {
   }
 
   springChallenge(subject) {
-    console.log(`${this.name} has begun spring challenge on ${subject}`);
+    console.log(`${this.name} has begun sprint challenge on ${subject}`);
   }
 }
 
@@ -77,4 +77,99 @@ const fred = new Instructor({
   catchPhrase: `Don't forget the homies`
 });
 
+const frank = new Instructor({
+  name: 'Frank',
+  location: 'Jackson',
+  age: 32,
+  favLanguage: 'JavaScript',
+  specialty: 'back-end',
+  catchPhrase: `Don't forget the homies`
+});
+
+const red = new Instructor({
+  name: 'Red',
+  location: 'Dallas',
+  age: 39,
+  favLanguage: 'Python',
+  specialty: 'CS',
+  catchPhrase: `Don't you leave me`
+});
+
+const tedd = new Student ({
+  name: 'Tedd',
+  location: 'Fort Worth',
+  age: 30,
+  previousBackground: 'Med Tech',
+  className: 'WebPT7',
+  favSubjects: ['JS', 'HTML', 'Less']
+});
+
+const sandra = new Student ({
+  name: 'Sandra',
+  location: 'Detroit',
+  age: 30,
+  previousBackground: 'Nurse',
+  className: 'WebPT8',
+  favSubjects: ['JS', 'HTML', 'CSS']
+});
+
+const todd = new Student ({
+  name: 'Todd',
+  location: 'Saginaw',
+  age: 20,
+  previousBackground: 'Manual Labor',
+  className: 'WebPT8',
+  favSubjects: ['JS', 'HTML', 'Node']
+});
+
+const cassie = new ProjectManager({
+  name: 'Cassie',
+  location: 'New Town',
+  age: 23,
+  favLanguage: 'JavaScript',
+  specialty: 'Front-end',
+  catchPhrase: `Don't forget the homies`,
+  gradClassName: 'Web7',
+  favInstructor: 'Dan'
+});
+
+const pauline = new ProjectManager({
+  name: 'Pauline',
+  location: 'Phoenix',
+  age: 20,
+  favLanguage: 'C',
+  specialty: 'CS',
+  catchPhrase: `Don't forget the homies`,
+  gradClassName: 'Web13',
+  favInstructor: 'Dan'
+});
+
+const mike = new ProjectManager({
+  name: 'Mike',
+  location: 'New York City',
+  age: 33,
+  favLanguage: 'JavaScript',
+  specialty: 'Front-end',
+  catchPhrase: `Don't forget the homies`,
+  gradClassName: 'Web13',
+  favInstructor: 'Dan'
+});
+
 console.log(fred);
+console.log(frank);
+console.log(red);
+console.log(tedd);
+console.log(sandra);
+console.log(todd);
+console.log(cassie);
+console.log(pauline);
+console.log(mike);
+console.log('List Subjects Test');
+tedd.listsSubjects();
+fred.speak();
+fred.demo('Javascript I');
+fred.grade(todd, 'JavaScript I');
+todd.PRAssignment('JavaScript II');
+todd.springChallenge('JavaScript Fundamentals');
+cassie.standup('WebPT7_Cassie');
+cassie.debugsCode(tedd, 'JavaScript II');
